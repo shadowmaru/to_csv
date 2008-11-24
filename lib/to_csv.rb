@@ -32,9 +32,9 @@ class Array
       unless options[:header] == false
         csv << columns.collect do |column|
           if column.is_a?(Symbol)
-            column
+            column.to_s.humanize
           else
-            "#{column.keys.first}_#{column[column.keys.first]}"
+            "#{column.keys.first}_#{column[column.keys.first]}".titleize
           end
         end
       end 
