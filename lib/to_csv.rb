@@ -42,7 +42,11 @@ class Array
       self.each do |item|
         csv << columns.collect do |column|
           if column.kind_of?(Hash)
-            item.send(column.keys.first).send(column[column.keys.first])
+            if item.send(column.keys.first).nil?
+              ""
+            else
+              item.send(column.keys.first).send(column[column.keys.first])
+            end
           else
             item.send(column)
           end
